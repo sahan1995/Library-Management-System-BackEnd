@@ -1,6 +1,7 @@
 package lk.geeks.service.impl;
 
 import lk.geeks.dto.ItemDTO;
+import lk.geeks.dto.ItemXMLDTO;
 import lk.geeks.entity.Item;
 import lk.geeks.repostitory.ItemRepository;
 import lk.geeks.service.ItemService;
@@ -71,7 +72,7 @@ public class ItemServiceImpl implements ItemService {
         }
 
         ItemDTO itemDTO = new ItemDTO();
-
+//        ItemXMLDTO itemXMLDTO = new ItemXMLDTO();
         BeanUtils.copyProperties(itemRepository.findById(itemCode).get(),itemDTO);
         return  itemDTO;
     }
@@ -99,6 +100,8 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemDTO> findByitemCategory(String itemCategory) {
+
+
         List<Item> items = itemRepository.findAll();
         if(items.isEmpty()){
             return null;
@@ -114,7 +117,66 @@ public class ItemServiceImpl implements ItemService {
         });
 
         return itemDTOS;
+
     }
 
+    @Override
+    public List<ItemDTO> findByCategory(String category) {
+        List<Item> items = itemRepository.findAll();
+        if(items.isEmpty()){
+            return null;
+        }
 
+        List<ItemDTO> itemDTOS = new ArrayList<>();
+        items.forEach(item -> {
+            if(item.getBookCatagory().equals(category)){
+                ItemDTO itemDTO = new ItemDTO();
+                BeanUtils.copyProperties(item,itemDTO);
+                itemDTOS.add(itemDTO);
+            }
+        });
+
+        return itemDTOS;
+    }
+
+    @Override
+    public List<ItemDTO> findByItemCategoryAndCategory(String itemCategory, String category) {
+        List<Item> items = itemRepository.findAll();
+        if(items.isEmpty()){
+            return null;
+        }
+
+        List<ItemDTO> itemDTOS = new ArrayList<>();
+
+        if(itemCategory.equals("All Items")){
+            items.forEach(item -> {
+                if(item.getItemCategory().equals(itemCategory)){
+                    ItemDTO itemDTO = new ItemDTO();
+                    BeanUtils.copyProperties(item,itemDTO);
+                    itemDTOS.add(itemDTO);
+                }
+            });
+        }else if(category.equals("All Categories")){
+            items.forEach(item -> {
+                if(item.getBookCatagory().equals(itemCategory)){
+                    ItemDTO itemDTO = new ItemDTO();
+                    BeanUtils.copyProperties(item,itemDTO);
+                    itemDTOS.add(itemDTO);
+                }
+            });
+        }else if(!itemCategory.equals("All Items") && !category.equals("All Categories")){
+            items.forEach(item -> {
+                if(item.getBookCatagory().equals(category) && item.getItemCategory().equals(itemCategory)){
+                    ItemDTO itemDTO = new ItemDTO();
+                    BeanUtils.copyProperties(item,itemDTO);
+                    itemDTOS.add(itemDTO);
+                }
+            });
+        }
+
+
+
+
+        return itemDTOS;
+    }
 }

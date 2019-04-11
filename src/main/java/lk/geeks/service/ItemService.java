@@ -1,6 +1,7 @@
 package lk.geeks.service;
 
 import lk.geeks.dto.ItemDTO;
+import lk.geeks.dto.ItemXMLDTO;
 import lk.geeks.entity.Item;
 
 import java.util.List;
@@ -23,6 +24,12 @@ public interface ItemService {
 
     boolean setPublic(String itemCode);
 
-    List<ItemDTO> findByitemCategory(String itemCategory);
+    List<ItemDTO> findByitemCategory(String itemCategorys);
+
+    List<ItemDTO> findByCategory(String category);
+//
+    List<ItemDTO> findByItemCategoryAndCategory(String itemCategory,String category);
+
+
 
 }

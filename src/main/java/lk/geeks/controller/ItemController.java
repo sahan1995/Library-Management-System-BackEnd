@@ -1,8 +1,10 @@
 package lk.geeks.controller;
 
 import lk.geeks.dto.ItemDTO;
+import lk.geeks.dto.ItemXMLDTO;
 import lk.geeks.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -88,13 +90,32 @@ public class ItemController {
     }
 
     /**
-     * Get Items By Category
-     * @return List of Category
+     * Get Items By Item Category
+     * @return List of Item DTO
      */
-    @GetMapping(value = "/getBooks/{itemCategory}")
-    public List<ItemDTO> getItemByCategory(@PathVariable("itemCategory") String itemCategory){
+    @GetMapping(value = "/byItemCategory/{itemCategory}")
+    public List<ItemDTO> byItemCategory(@PathVariable("itemCategory") String itemCategory){
         return itemService.findByitemCategory(itemCategory);
     }
+
+
+    /**
+     * Get Items By Category
+     * @return List of Item DTO
+     */
+    @GetMapping(value = "/byCategory/{category}")
+    public List<ItemDTO> byCategory(@PathVariable("category") String category){
+        return itemService.findByCategory(category);
+    }
+    /**
+     * Get Items By Category
+     * @return List of Item DTO
+     */
+    @GetMapping(value = "/byCategory&itemCategory/{category}/{itemCategory}")
+    public List<ItemDTO> byCategoryAndItemCategory(@PathVariable("category") String category,@PathVariable("itemCategory") String itemCategory){
+        return itemService.findByItemCategoryAndCategory(itemCategory,category);
+    }
+
 
     /**
      * Change status of Item
