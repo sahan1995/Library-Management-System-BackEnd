@@ -10,15 +10,41 @@ public class LocalMemberDTO {
     private
     String NIC;
 
-    private String fname;
-    private String mname;
-    private String lname;
+    private String fullname;
+
     private String telephone;
     private String gender;
     private String dob;
     private String email;
     private String address;
 
+    private String userName;
+    private String password;
+
+    public LocalMemberDTO(String NIC, String fullname, String telephone, String gender, String dob, String email, String address, String userName, String password) {
+        this.NIC = NIC;
+        this.fullname = fullname;
+        this.telephone = telephone;
+        this.gender = gender;
+        this.dob = dob;
+        this.email = email;
+        this.address = address;
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public LocalMemberDTO(String NIC, String fullname, String telephone, String gender, String dob, String email, String address) {
+        this.NIC = NIC;
+        this.fullname = fullname;
+        this.telephone = telephone;
+        this.gender = gender;
+        this.dob = dob;
+        this.email = email;
+        this.address = address;
+    }
+
+    public LocalMemberDTO() {
+    }
 
     public String getNIC() {
         return NIC;
@@ -28,28 +54,12 @@ public class LocalMemberDTO {
         this.NIC = NIC;
     }
 
-    public String getFname() {
-        return fname;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getMname() {
-        return mname;
-    }
-
-    public void setMname(String mname) {
-        this.mname = mname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getTelephone() {
@@ -92,33 +102,34 @@ public class LocalMemberDTO {
         this.address = address;
     }
 
-    public LocalMemberDTO(String NIC, String fname, String mname, String lname, String telephone, String gender, String dob, String email, String address) {
-        this.NIC = NIC;
-        this.fname = fname;
-        this.mname = mname;
-        this.lname = lname;
-        this.telephone = telephone;
-        this.gender = gender;
-        this.dob = dob;
-        this.email = email;
-        this.address = address;
+    public String getUserName() {
+        return userName;
     }
 
-    public LocalMemberDTO() {
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "LocalMemberDTO{" +
                 "NIC='" + NIC + '\'' +
-                ", fname='" + fname + '\'' +
-                ", mname='" + mname + '\'' +
-                ", lname='" + lname + '\'' +
+                ", fullname='" + fullname + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", gender='" + gender + '\'' +
                 ", dob='" + dob + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

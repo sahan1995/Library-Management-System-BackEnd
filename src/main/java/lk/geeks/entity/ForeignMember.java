@@ -9,9 +9,7 @@ public class ForeignMember {
     @Id
     private
     String NIC;
-    private String fname;
-    private String mname;
-    private String lname;
+    private String fullname;
     private String gender;
     private String email;
     private String dob;
@@ -20,11 +18,9 @@ public class ForeignMember {
     private String address;
     private boolean isApprove;
 
-    public ForeignMember(String NIC, String fname, String mname, String lname, String gender, String email, String dob, String telphone, String country, String address, boolean isApprove) {
+    public ForeignMember(String NIC, String fullname, String gender, String email, String dob, String telphone, String country, String address, boolean isApprove) {
         this.NIC = NIC;
-        this.fname = fname;
-        this.mname = mname;
-        this.lname = lname;
+        this.fullname = fullname;
         this.gender = gender;
         this.email = email;
         this.dob = dob;
@@ -32,6 +28,9 @@ public class ForeignMember {
         this.country = country;
         this.address = address;
         this.isApprove = isApprove;
+    }
+
+    public ForeignMember() {
     }
 
     public String getNIC() {
@@ -42,28 +41,12 @@ public class ForeignMember {
         this.NIC = NIC;
     }
 
-    public String getFname() {
-        return fname;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getMname() {
-        return mname;
-    }
-
-    public void setMname(String mname) {
-        this.mname = mname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getGender() {
@@ -98,14 +81,6 @@ public class ForeignMember {
         this.telphone = telphone;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getCountry() {
         return country;
     }
@@ -114,7 +89,12 @@ public class ForeignMember {
         this.country = country;
     }
 
-    public ForeignMember() {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public boolean isApprove() {
@@ -129,9 +109,7 @@ public class ForeignMember {
     public String toString() {
         return "ForeignMember{" +
                 "NIC='" + NIC + '\'' +
-                ", fname='" + fname + '\'' +
-                ", mname='" + mname + '\'' +
-                ", lname='" + lname + '\'' +
+                ", fullname='" + fullname + '\'' +
                 ", gender='" + gender + '\'' +
                 ", email='" + email + '\'' +
                 ", dob='" + dob + '\'' +

@@ -10,15 +10,26 @@ public class LocalMember {
     private
     String NIC;
 
-    private String fname;
-    private String mname;
-    private String lname;
+    private String fullname;
     private String telephone;
     private String gender;
     private String dob;
     private String email;
     private String address;
 
+
+    public LocalMember(String NIC, String fullname, String telephone, String gender, String dob, String email, String address) {
+        this.NIC = NIC;
+        this.fullname = fullname;
+        this.telephone = telephone;
+        this.gender = gender;
+        this.dob = dob;
+        this.email = email;
+        this.address = address;
+    }
+
+    public LocalMember() {
+    }
 
     public String getNIC() {
         return NIC;
@@ -28,28 +39,12 @@ public class LocalMember {
         this.NIC = NIC;
     }
 
-    public String getFname() {
-        return fname;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getMname() {
-        return mname;
-    }
-
-    public void setMname(String mname) {
-        this.mname = mname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getTelephone() {
@@ -92,28 +87,11 @@ public class LocalMember {
         this.address = address;
     }
 
-    public LocalMember(String NIC, String fname, String mname, String lname, String telephone, String gender, String dob, String email, String address) {
-        this.NIC = NIC;
-        this.fname = fname;
-        this.mname = mname;
-        this.lname = lname;
-        this.telephone = telephone;
-        this.gender = gender;
-        this.dob = dob;
-        this.email = email;
-        this.address = address;
-    }
-
-    public LocalMember() {
-    }
-
     @Override
     public String toString() {
-        return "LocalMemberDTO{" +
+        return "LocalMember{" +
                 "NIC='" + NIC + '\'' +
-                ", fname='" + fname + '\'' +
-                ", mname='" + mname + '\'' +
-                ", lname='" + lname + '\'' +
+                ", fullname='" + fullname + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", gender='" + gender + '\'' +
                 ", dob='" + dob + '\'' +

@@ -12,7 +12,7 @@ public class User {
 
     private String password;
 
-    private String isApprove;
+    private boolean isApprove;
 
     private String memberType;
 
@@ -35,11 +35,11 @@ public class User {
         this.password = password;
     }
 
-    public String getIsApprove() {
+    public boolean getIsApprove() {
         return isApprove;
     }
 
-    public void setIsApprove(String isApprove) {
+    public void setIsApprove(boolean isApprove) {
         this.isApprove = isApprove;
     }
 
@@ -59,7 +59,7 @@ public class User {
         this.nic = nic;
     }
 
-    public User(String uname, String password, String isApprove, String memberType, String nic) {
+    public User(String uname, String password, boolean isApprove, String memberType, String nic) {
         this.uname = uname;
         this.password = password;
         this.isApprove = isApprove;

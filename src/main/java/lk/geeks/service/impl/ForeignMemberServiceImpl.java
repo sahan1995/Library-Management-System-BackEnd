@@ -1,9 +1,11 @@
 package lk.geeks.service.impl;
 
 import lk.geeks.dto.ForeignMemberDTO;
+import lk.geeks.dto.UserDTO;
 import lk.geeks.entity.ForeignMember;
 import lk.geeks.repostitory.ForeignMemberRepository;
 import lk.geeks.service.ForeignMemberService;
+import lk.geeks.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,25 +21,29 @@ public class ForeignMemberServiceImpl implements ForeignMemberService {
 
 
     @Autowired
-    ForeignMemberRepository foreignMemberRepository;
+    private ForeignMemberRepository foreignMemberRepository;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public boolean save(ForeignMemberDTO foreignMemberDTO) {
 
 
-
         ForeignMember foreignMember = new ForeignMember();
-        BeanUtils.copyProperties(foreignMemberDTO,foreignMember);
+        BeanUtils.copyProperties(foreignMemberDTO, foreignMember);
         foreignMemberRepository.save(foreignMember);
+        UserDTO userDTO = new UserDTO(foreignMemberDTO.getUserName(),foreignMemberDTO.getPassword(),false,"foreign",foreignMemberDTO.getNIC());
+        userService.save(userDTO);
         return true;
     }
 
     @Override
-    public boolean update(String NIC,ForeignMemberDTO foreignMemberDTO) {
+    public boolean update(String NIC, ForeignMemberDTO foreignMemberDTO) {
 
 
         ForeignMember foreignMember = foreignMemberRepository.findById(NIC).get();
-        BeanUtils.copyProperties(foreignMemberDTO,foreignMember);
+        BeanUtils.copyProperties(foreignMemberDTO, foreignMember);
         foreignMemberRepository.save(foreignMember);
         return true;
     }
@@ -47,13 +53,13 @@ public class ForeignMemberServiceImpl implements ForeignMemberService {
 
         List<ForeignMember> allforignMembers = foreignMemberRepository.findAll();
 
-        if(allforignMembers.isEmpty()){
+        if (allforignMembers.isEmpty()) {
             return null;
         }
         List<ForeignMemberDTO> foreignMemberDTOS = new ArrayList<>();
-        allforignMembers.forEach(member->{
+        allforignMembers.forEach(member -> {
             ForeignMemberDTO foreignMemberDTO = new ForeignMemberDTO();
-            BeanUtils.copyProperties(member,foreignMemberDTO);
+            BeanUtils.copyProperties(member, foreignMemberDTO);
             foreignMemberDTOS.add(foreignMemberDTO);
         });
 
@@ -64,13 +70,13 @@ public class ForeignMemberServiceImpl implements ForeignMemberService {
     @Override
     public ForeignMemberDTO findById(String NIC) {
 
-        if(!foreignMemberRepository.findById(NIC).isPresent()){
+        if (!foreignMemberRepository.findById(NIC).isPresent()) {
             return null;
         }
 
         ForeignMember foreignMember = foreignMemberRepository.findById(NIC).get();
         ForeignMemberDTO foreignMemberDTO = new ForeignMemberDTO();
-        BeanUtils.copyProperties(foreignMember,foreignMemberDTO);
+        BeanUtils.copyProperties(foreignMember, foreignMemberDTO);
         return foreignMemberDTO;
 
     }

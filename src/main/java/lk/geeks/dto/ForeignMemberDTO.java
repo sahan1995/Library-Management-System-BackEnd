@@ -9,9 +9,7 @@ public class ForeignMemberDTO {
 
     private
     String NIC;
-    private String fname;
-    private String mname;
-    private String lname;
+    private String fullname;
     private String gender;
     private String email;
     private String dob;
@@ -19,12 +17,13 @@ public class ForeignMemberDTO {
     private String country;
     private String address;
     private boolean isApprove;
+private String userName;
+private String password;
 
-    public ForeignMemberDTO(String NIC, String fname, String mname, String lname, String gender, String email, String dob, String telphone, String country, String address, boolean isApprove) {
+
+    public ForeignMemberDTO(String NIC, String fullname, String gender, String email, String dob, String telphone, String country, String address, boolean isApprove, String userName, String password) {
         this.NIC = NIC;
-        this.fname = fname;
-        this.mname = mname;
-        this.lname = lname;
+        this.fullname = fullname;
         this.gender = gender;
         this.email = email;
         this.dob = dob;
@@ -32,6 +31,23 @@ public class ForeignMemberDTO {
         this.country = country;
         this.address = address;
         this.isApprove = isApprove;
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public ForeignMemberDTO(String NIC, String fullname, String gender, String email, String dob, String telphone, String country, String address, boolean isApprove) {
+        this.NIC = NIC;
+        this.fullname = fullname;
+        this.gender = gender;
+        this.email = email;
+        this.dob = dob;
+        this.telphone = telphone;
+        this.country = country;
+        this.address = address;
+        this.isApprove = isApprove;
+    }
+
+    public ForeignMemberDTO() {
     }
 
     public String getNIC() {
@@ -42,28 +58,12 @@ public class ForeignMemberDTO {
         this.NIC = NIC;
     }
 
-    public String getFname() {
-        return fname;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getMname() {
-        return mname;
-    }
-
-    public void setMname(String mname) {
-        this.mname = mname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getGender() {
@@ -98,20 +98,20 @@ public class ForeignMemberDTO {
         this.telphone = telphone;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getCountry() {
         return country;
     }
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public boolean isApprove() {
@@ -122,16 +122,28 @@ public class ForeignMemberDTO {
         isApprove = approve;
     }
 
-    public ForeignMemberDTO() {
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "ForeignMemberDTO{" +
                 "NIC='" + NIC + '\'' +
-                ", fname='" + fname + '\'' +
-                ", mname='" + mname + '\'' +
-                ", lname='" + lname + '\'' +
+                ", fullname='" + fullname + '\'' +
                 ", gender='" + gender + '\'' +
                 ", email='" + email + '\'' +
                 ", dob='" + dob + '\'' +
@@ -139,6 +151,8 @@ public class ForeignMemberDTO {
                 ", country='" + country + '\'' +
                 ", address='" + address + '\'' +
                 ", isApprove=" + isApprove +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

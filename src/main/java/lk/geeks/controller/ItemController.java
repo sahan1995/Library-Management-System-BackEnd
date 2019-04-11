@@ -12,6 +12,9 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "api/v1/items")
+/**
+ * This is the API for the Control Items
+ */
 public class ItemController {
 
     @Autowired
