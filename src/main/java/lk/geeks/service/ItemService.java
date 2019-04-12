@@ -27,9 +27,11 @@ public interface ItemService {
     List<ItemDTO> findByitemCategory(String itemCategorys);
 
     List<ItemDTO> findByCategory(String category);
-//
+
     List<ItemDTO> findByItemCategoryAndCategory(String itemCategory,String category);
 
+    List<ItemDTO> findByAny(String role,String itemCategory,String findWord);
 
+    List <ItemDTO> findItemCategoryANDCategory(String itemCategory,String category);
 
 }

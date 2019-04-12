@@ -18,5 +18,5 @@ public interface ForeignMemberService {
 
     boolean approveMember(String NIC);
 
-
+    List<ForeignMemberDTO> getRequests();
 }

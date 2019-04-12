@@ -46,7 +46,7 @@ public class ForeignMemberController {
      */
     @PostMapping
     public boolean save(@RequestBody ForeignMemberDTO foreignMemberDTO){
-        System.out.println("Here");
+
         return foreignMemberService.save(foreignMemberDTO);
     }
 
@@ -81,5 +81,15 @@ public class ForeignMemberController {
     @PutMapping(value = "/approveMember/{NIC}")
     public boolean approveMember(@PathVariable("NIC") String NIC){
         return foreignMemberService.approveMember(NIC);
+    }
+
+
+    /**
+     * Get All Foreign Member Requests
+     * @return All foreign member requests
+     */
+    @GetMapping(value = "/requests")
+    public List<ForeignMemberDTO> getRequests(){
+        return foreignMemberService.getRequests();
     }
 }

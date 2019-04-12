@@ -94,6 +94,22 @@ public class ForeignMemberServiceImpl implements ForeignMemberService {
 
         ForeignMember foreignMember = foreignMemberRepository.findById(NIC).get();
         foreignMember.setApprove(true);
+        userService.approveMemebr(NIC);
         return true;
+    }
+
+    @Override
+    public List<ForeignMemberDTO> getRequests() {
+        List<ForeignMember> foreignMembers = foreignMemberRepository.findAll();
+        List<ForeignMemberDTO> foreignMemberDTOS = new ArrayList<>();
+        foreignMembers.forEach(foreignMember -> {
+            if(foreignMember.isApprove()==false){
+                ForeignMemberDTO foreignMemberDTO = new ForeignMemberDTO();
+                BeanUtils.copyProperties(foreignMember,foreignMemberDTO);
+                foreignMemberDTOS.add(foreignMemberDTO);
+            }
+        });
+
+        return foreignMemberDTOS;
     }
 }

@@ -179,4 +179,104 @@ public class ItemServiceImpl implements ItemService {
 
         return itemDTOS;
     }
+
+    @Override
+    public List<ItemDTO> findByAny(String role,String itemCategory,String findWord) {
+
+        List<Item> items = itemRepository.findAll();
+        if(items.isEmpty()){
+            return null;
+        }
+        List<ItemDTO> itemDTOS  = new ArrayList<>();
+
+        items.forEach(item -> {
+            if(item.getItemCategory().equals(itemCategory)){
+
+                if(role.equals("local")){
+                    if(item.getTitle().equals(findWord)){
+                        ItemDTO itemDTO = new ItemDTO();
+                        BeanUtils.copyProperties(item,itemDTO);
+                        itemDTOS.add(itemDTO);
+                    }else if(item.getAuthor().equals(findWord)){
+
+
+                        ItemDTO itemDTO = new ItemDTO();
+                        BeanUtils.copyProperties(item,itemDTO);
+                        itemDTOS.add(itemDTO);
+                    }else if(item.getPublisher().equals(findWord)){
+                        ItemDTO itemDTO = new ItemDTO();
+                        BeanUtils.copyProperties(item,itemDTO);
+                        itemDTOS.add(itemDTO);
+                    }else if(item.getItemCode().equals(findWord)){
+                        ItemDTO itemDTO = new ItemDTO();
+                        BeanUtils.copyProperties(item,itemDTO);
+                        itemDTOS.add(itemDTO);
+                    }else if(item.getBookCatagory().equals(findWord)){
+                        ItemDTO itemDTO = new ItemDTO();
+                        BeanUtils.copyProperties(item,itemDTO);
+                        itemDTOS.add(itemDTO);
+                    }else if(item.getYear().equals(findWord)){
+                        ItemDTO itemDTO = new ItemDTO();
+                        BeanUtils.copyProperties(item,itemDTO);
+                        itemDTOS.add(itemDTO);
+                    }
+                }else {
+                    if(item.getBookCatagory().equals("Public")){
+                        if(item.getTitle().equals(findWord)){
+                            ItemDTO itemDTO = new ItemDTO();
+                            BeanUtils.copyProperties(item,itemDTO);
+                            itemDTOS.add(itemDTO);
+                        }else if(item.getAuthor().equals(findWord)){
+                            ItemDTO itemDTO = new ItemDTO();
+                            BeanUtils.copyProperties(item,itemDTO);
+                            itemDTOS.add(itemDTO);
+                        }else if(item.getPublisher().equals(findWord)){
+                            ItemDTO itemDTO = new ItemDTO();
+                            BeanUtils.copyProperties(item,itemDTO);
+                            itemDTOS.add(itemDTO);
+                        }else if(item.getItemCode().equals(findWord)){
+                            ItemDTO itemDTO = new ItemDTO();
+                            BeanUtils.copyProperties(item,itemDTO);
+                            itemDTOS.add(itemDTO);
+                        }else if(item.getBookCatagory().equals(findWord)){
+                            ItemDTO itemDTO = new ItemDTO();
+                            BeanUtils.copyProperties(item,itemDTO);
+                            itemDTOS.add(itemDTO);
+                        }else if(item.getYear().equals(findWord)){
+                            ItemDTO itemDTO = new ItemDTO();
+                            BeanUtils.copyProperties(item,itemDTO);
+                            itemDTOS.add(itemDTO);
+                        }
+                    }
+                }
+
+
+
+
+
+            }
+
+        });
+
+        return itemDTOS;
+    }
+
+    @Override
+    public List<ItemDTO> findItemCategoryANDCategory(String itemCategory, String category) {
+        List<Item> items = itemRepository.findAll();
+        if(items.isEmpty()){
+            return null;
+        }
+
+        List<ItemDTO> itemDTOS = new ArrayList<>();
+        items.forEach(item -> {
+            if(item.getItemCategory().equals(itemCategory) && item.getBookCatagory().equals(category)){
+                ItemDTO itemDTO = new ItemDTO();
+                BeanUtils.copyProperties(item,itemDTO);
+                itemDTOS.add(itemDTO);
+            }
+        });
+
+        return itemDTOS;
+    }
 }

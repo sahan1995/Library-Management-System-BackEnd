@@ -10,5 +10,5 @@ public interface UserService {
 
     LoginDetailDTO login(String uname, String password);
 
-
+    boolean approveMemebr(String NIC);
 }

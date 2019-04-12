@@ -64,4 +64,19 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
+
+    @Override
+    public boolean approveMemebr(String NIC) {
+        List<User> users = userRepository.findAll();
+
+
+        users.forEach(user -> {
+            if(user.getNic().equals(NIC)){
+                user.setIsApprove(true);
+                return;
+            }
+        });
+
+        return true;
+    }
 }
