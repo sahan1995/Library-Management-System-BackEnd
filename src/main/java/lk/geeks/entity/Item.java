@@ -17,6 +17,36 @@ public class Item {
     private String bookCatagory;
     private String ISBN;
     private double price;
+    private String floor;
+    private String cupBoard;
+    private String stock;
+
+
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
+    }
+
+    public String getFloor() {
+        return floor;
+    }
+
+    public void setFloor(String floor) {
+        this.floor = floor;
+    }
+
+    public String getCupBoard() {
+        return cupBoard;
+    }
+
+    public void setCupBoard(String cupBoard) {
+        this.cupBoard = cupBoard;
+    }
+
+
 
     public String getItemCode() {
         return itemCode;
@@ -90,7 +120,7 @@ public class Item {
         this.price = price;
     }
 
-    public Item(String itemCode, String itemCategory, String title, String author, String publisher, String year, String bookCatagory, String ISBN, double price) {
+    public Item(String itemCode, String itemCategory, String title, String author, String publisher, String year, String bookCatagory, String ISBN, double price, String floor, String cupBoard, String stock) {
         this.itemCode = itemCode;
         this.itemCategory = itemCategory;
         this.title = title;
@@ -100,6 +130,9 @@ public class Item {
         this.bookCatagory = bookCatagory;
         this.ISBN = ISBN;
         this.price = price;
+        this.floor = floor;
+        this.cupBoard = cupBoard;
+        this.stock = stock;
     }
 
     public Item() {
@@ -117,6 +150,9 @@ public class Item {
                 ", bookCatagory='" + bookCatagory + '\'' +
                 ", ISBN='" + ISBN + '\'' +
                 ", price=" + price +
+                ", floor='" + floor + '\'' +
+                ", cupBoard='" + cupBoard + '\'' +
+                ", stock='" + stock + '\'' +
                 '}';
     }
 }
