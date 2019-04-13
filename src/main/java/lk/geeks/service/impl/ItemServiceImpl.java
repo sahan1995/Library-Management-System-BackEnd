@@ -189,44 +189,86 @@ public class ItemServiceImpl implements ItemService {
         }
         List<ItemDTO> itemDTOS  = new ArrayList<>();
 
-        items.forEach(item -> {
-            if(item.getItemCategory().equals(itemCategory)){
+        if(itemCategory.equals("All")){
+            items.forEach(item -> {
+                        if(role.equals("local")) {
+                            if (item.getTitle().equals(findWord)) {
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item, itemDTO);
+                                itemDTOS.add(itemDTO);
+                            } else if (item.getAuthor().equals(findWord)) {
 
-                if(role.equals("local")){
-                    if(item.getTitle().equals(findWord)){
-                        ItemDTO itemDTO = new ItemDTO();
-                        BeanUtils.copyProperties(item,itemDTO);
-                        itemDTOS.add(itemDTO);
-                    }else if(item.getAuthor().equals(findWord)){
 
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item, itemDTO);
+                                itemDTOS.add(itemDTO);
+                            } else if (item.getPublisher().equals(findWord)) {
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item, itemDTO);
+                                itemDTOS.add(itemDTO);
+                            } else if (item.getItemCode().equals(findWord)) {
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item, itemDTO);
+                                itemDTOS.add(itemDTO);
+                            } else if (item.getBookCatagory().equals(findWord)) {
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item, itemDTO);
+                                itemDTOS.add(itemDTO);
+                            } else if (item.getYear().equals(findWord)) {
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item, itemDTO);
+                                itemDTOS.add(itemDTO);
+                            } else if (item.getItemCategory().equals(findWord)) {
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item, itemDTO);
+                                itemDTOS.add(itemDTO);
+                            }
+                        }else {
+                            if(item.getBookCatagory().equals("Public")){
+                                if(item.getTitle().equals(findWord)){
+                                    ItemDTO itemDTO = new ItemDTO();
+                                    BeanUtils.copyProperties(item,itemDTO);
+                                    itemDTOS.add(itemDTO);
+                                }else if(item.getAuthor().equals(findWord)){
+                                    ItemDTO itemDTO = new ItemDTO();
+                                    BeanUtils.copyProperties(item,itemDTO);
+                                    itemDTOS.add(itemDTO);
+                                }else if(item.getPublisher().equals(findWord)){
+                                    ItemDTO itemDTO = new ItemDTO();
+                                    BeanUtils.copyProperties(item,itemDTO);
+                                    itemDTOS.add(itemDTO);
+                                }else if(item.getItemCode().equals(findWord)){
+                                    ItemDTO itemDTO = new ItemDTO();
+                                    BeanUtils.copyProperties(item,itemDTO);
+                                    itemDTOS.add(itemDTO);
+                                }else if(item.getBookCatagory().equals(findWord)){
+                                    ItemDTO itemDTO = new ItemDTO();
+                                    BeanUtils.copyProperties(item,itemDTO);
+                                    itemDTOS.add(itemDTO);
+                                }else if(item.getYear().equals(findWord)){
+                                    ItemDTO itemDTO = new ItemDTO();
+                                    BeanUtils.copyProperties(item,itemDTO);
+                                    itemDTOS.add(itemDTO);
+                                }else if(item.getItemCategory().equals(findWord)){
+                                    ItemDTO itemDTO = new ItemDTO();
+                                    BeanUtils.copyProperties(item,itemDTO);
+                                    itemDTOS.add(itemDTO);
+                                }
+                            }
+                        }
+            });
+        }else{
+            items.forEach(item -> {
+                if(item.getItemCategory().equals(itemCategory)){
 
-                        ItemDTO itemDTO = new ItemDTO();
-                        BeanUtils.copyProperties(item,itemDTO);
-                        itemDTOS.add(itemDTO);
-                    }else if(item.getPublisher().equals(findWord)){
-                        ItemDTO itemDTO = new ItemDTO();
-                        BeanUtils.copyProperties(item,itemDTO);
-                        itemDTOS.add(itemDTO);
-                    }else if(item.getItemCode().equals(findWord)){
-                        ItemDTO itemDTO = new ItemDTO();
-                        BeanUtils.copyProperties(item,itemDTO);
-                        itemDTOS.add(itemDTO);
-                    }else if(item.getBookCatagory().equals(findWord)){
-                        ItemDTO itemDTO = new ItemDTO();
-                        BeanUtils.copyProperties(item,itemDTO);
-                        itemDTOS.add(itemDTO);
-                    }else if(item.getYear().equals(findWord)){
-                        ItemDTO itemDTO = new ItemDTO();
-                        BeanUtils.copyProperties(item,itemDTO);
-                        itemDTOS.add(itemDTO);
-                    }
-                }else {
-                    if(item.getBookCatagory().equals("Public")){
+                    if(role.equals("local")){
                         if(item.getTitle().equals(findWord)){
                             ItemDTO itemDTO = new ItemDTO();
                             BeanUtils.copyProperties(item,itemDTO);
                             itemDTOS.add(itemDTO);
                         }else if(item.getAuthor().equals(findWord)){
+
+
                             ItemDTO itemDTO = new ItemDTO();
                             BeanUtils.copyProperties(item,itemDTO);
                             itemDTOS.add(itemDTO);
@@ -246,17 +288,50 @@ public class ItemServiceImpl implements ItemService {
                             ItemDTO itemDTO = new ItemDTO();
                             BeanUtils.copyProperties(item,itemDTO);
                             itemDTOS.add(itemDTO);
+                        }else if(item.getItemCategory().equals(findWord)){
+                            ItemDTO itemDTO = new ItemDTO();
+                            BeanUtils.copyProperties(item,itemDTO);
+                            itemDTOS.add(itemDTO);
+                        }
+                    }else {
+                        if(item.getBookCatagory().equals("Public")){
+                            if(item.getTitle().equals(findWord)){
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item,itemDTO);
+                                itemDTOS.add(itemDTO);
+                            }else if(item.getAuthor().equals(findWord)){
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item,itemDTO);
+                                itemDTOS.add(itemDTO);
+                            }else if(item.getPublisher().equals(findWord)){
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item,itemDTO);
+                                itemDTOS.add(itemDTO);
+                            }else if(item.getItemCode().equals(findWord)){
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item,itemDTO);
+                                itemDTOS.add(itemDTO);
+                            }else if(item.getBookCatagory().equals(findWord)){
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item,itemDTO);
+                                itemDTOS.add(itemDTO);
+                            }else if(item.getYear().equals(findWord)){
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item,itemDTO);
+                                itemDTOS.add(itemDTO);
+                            }else if(item.getItemCategory().equals(findWord)){
+                                ItemDTO itemDTO = new ItemDTO();
+                                BeanUtils.copyProperties(item,itemDTO);
+                                itemDTOS.add(itemDTO);
+                            }
                         }
                     }
                 }
 
+            });
+        }
 
 
-
-
-            }
-
-        });
 
         return itemDTOS;
     }

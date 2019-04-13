@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = {"http://localhost:4200","http://192.168.1.101:8100"})
 @RestController
 @RequestMapping(value = "api/v1/items")
 /**
@@ -144,7 +144,8 @@ public class ItemController {
     }
 
     /**
-     * Find Item by any Keyword
+     * Find Item by any Keyword. If you want find all item categories send 'All' with category param
+     * @param role role of logged member
      * @param category Item Category Name
      * @param keyword key word
      * @return List of Items
@@ -164,4 +165,6 @@ public class ItemController {
     public List<ItemDTO> findItemCategoryANDCategory(@PathVariable("itemCategory") String itemCategory,@PathVariable("category") String category){
         return  itemService.findByItemCategoryAndCategory(itemCategory,category);
     }
+
+
 }
