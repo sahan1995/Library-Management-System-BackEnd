@@ -14,8 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
 @Transactional
 @Service
@@ -73,10 +78,43 @@ public class UserServiceImpl implements UserService {
         users.forEach(user -> {
             if(user.getNic().equals(NIC)){
                 user.setIsApprove(true);
+                try {
+                    sendEmail(NIC);
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+
+                }
                 return;
             }
         });
 
         return true;
+    }
+
+    private  void  sendEmail(String NIC) throws MessagingException {
+
+        ForeignMemberDTO member = foreignMemberService.findById(NIC);
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("SLlibrary1234@gmail.com", "SL.Lib01234");
+            }
+        });
+
+        Message msg = new MimeMessage(session);
+         msg.setFrom(new InternetAddress("SLlibrary1234@gmail.com",false));
+         msg.setRecipient(Message.RecipientType.TO,new InternetAddress(member.getEmail()));
+         msg.setSubject("SriLanka National Library");
+         msg.setContent("Congratulations, Your request accepted by National Library of Sri Lanka. Now you can login to our system using your user name and password ","text/html");
+         msg.setSentDate(new Date());
+         Transport.send(msg);
+
     }
 }
