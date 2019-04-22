@@ -28,6 +28,7 @@ public class ItemController {
      */
     @GetMapping
     public List<ItemDTO> findAll() {
+        System.out.println("HERE");
         return itemService.findAll();
     }
 
