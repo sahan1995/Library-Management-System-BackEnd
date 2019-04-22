@@ -26,7 +26,7 @@ public class LocalMemberController {
      * @param NIC NIC of Local Member
      * @return Local Member DTO
      */
-    @GetMapping(value = "/{NIC}")
+    @GetMapping(value = "/{NIC}",produces = { "application/xml", "text/xml" })
     public LocalMemberDTO findById(@PathVariable("NIC") String NIC){
         return localMemberService.findById(NIC);
     }

@@ -35,7 +35,7 @@ public class ItemController {
      * Get Item by Item Code
      *
      * @param itemCode Item Code of Item
-     * @return The Item DTO
+     * @return The Item DTO in XML Format
      */
     @GetMapping(value = "/{itemCode}")
     public ItemDTO findByID(@PathVariable("itemCode") String itemCode) {
@@ -48,9 +48,10 @@ public class ItemController {
      * @param itemDTO Item DTO containing all the information of Item
      * @return state of save or not
      */
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_XML_VALUE)
     public boolean save(@RequestBody ItemDTO itemDTO) {
         return itemService.save(itemDTO);
+
     }
 
     /**

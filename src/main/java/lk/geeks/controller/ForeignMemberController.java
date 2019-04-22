@@ -23,7 +23,7 @@ public class ForeignMemberController {
      * @param NIC Member NIC
      * @return The Foreign Member DTO
      */
-    @GetMapping(value = "/{NIC}")
+    @GetMapping(value = "/{NIC}",produces = {"application/xml", "text/xml"})
     public ForeignMemberDTO findByID(@PathVariable("NIC") String NIC){
         return foreignMemberService.findById(NIC);
     }
