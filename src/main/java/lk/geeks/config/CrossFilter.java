@@ -13,6 +13,7 @@ public class CrossFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
 
         httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
+//        httpServletResponse.setHeader("Access-Control-Allow-Origin","http://localhost:8100");
         httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE,OPTION");
         httpServletResponse.setHeader("Access-Control-Allow-Headers", "authorization, content-type, xsrf-token, Cache-Control");
         httpServletResponse.setHeader("Access-Control-Expose-Headers", "xsrf-token");

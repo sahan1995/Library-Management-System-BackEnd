@@ -11,6 +11,9 @@ import lk.geeks.service.LocalMemberService;
 import lk.geeks.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +27,7 @@ import java.util.Properties;
 
 @Transactional
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 
 
     @Autowired
@@ -91,6 +94,12 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    @Override
+    public User findByID(String uname) {
+        return userRepository.findById(uname).get();
+    }
+
+
     private  void  sendEmail(String NIC) throws MessagingException {
 
         ForeignMemberDTO member = foreignMemberService.findById(NIC);
@@ -117,4 +126,6 @@ public class UserServiceImpl implements UserService {
          Transport.send(msg);
 
     }
+
+
 }

@@ -3,6 +3,8 @@ package lk.geeks.controller;
 import lk.geeks.dto.ItemDTO;
 import lk.geeks.dto.ItemXMLDTO;
 import lk.geeks.service.ItemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,7 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     /**
      * Get all Items
@@ -28,7 +31,7 @@ public class ItemController {
      */
     @GetMapping
     public List<ItemDTO> findAll() {
-        System.out.println("HERE");
+        log.info("Final All Items");
         return itemService.findAll();
     }
 
@@ -119,6 +122,7 @@ public class ItemController {
      */
     @GetMapping(value = "/byCategory/{category}")
     public List<ItemDTO> byCategory(@PathVariable("category") String category) {
+        System.out.println(category);
         return itemService.findByCategory(category);
     }
 

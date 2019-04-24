@@ -5,6 +5,8 @@ import lk.geeks.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @CrossOrigin
 @RestController
 @RequestMapping(value = "api/v1/users")
@@ -25,10 +27,14 @@ public class UserController {
      */
     @GetMapping(value = "login/{userName}/{password}")
     public LoginDetailDTO signIn(@PathVariable("userName") String userName, @PathVariable("password") String password){
-
         return userService.login(userName,password);
 
     }
 
+
+    @PostMapping(path = "/login")
+    public Principal user(Principal principal){
+        return principal;
+    }
 
 }

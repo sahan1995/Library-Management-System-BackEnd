@@ -122,6 +122,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemDTO> findByCategory(String category) {
+        System.out.println(category+" here");
         List<Item> items = itemRepository.findAll();
         if(items.isEmpty()){
             return null;
@@ -129,6 +130,7 @@ public class ItemServiceImpl implements ItemService {
 
         List<ItemDTO> itemDTOS = new ArrayList<>();
         items.forEach(item -> {
+
             if(item.getBookCatagory().equals(category)){
                 ItemDTO itemDTO = new ItemDTO();
                 BeanUtils.copyProperties(item,itemDTO);
