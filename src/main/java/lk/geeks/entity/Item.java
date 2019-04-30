@@ -1,7 +1,9 @@
 package lk.geeks.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Item {
@@ -20,6 +22,12 @@ public class Item {
     private String floor;
     private String cupBoard;
     private String stock;
+
+    @OneToOne(mappedBy = "item",cascade = CascadeType.ALL)
+    private LocalBookBrrow localBookBrrow;
+
+    @OneToOne(mappedBy = "item",cascade = CascadeType.ALL)
+    private ForeignMemberBrrow foreignMemberBrrow;
 
 
     public String getStock() {
@@ -118,6 +126,22 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public LocalBookBrrow getLocalBookBrrow() {
+        return localBookBrrow;
+    }
+
+    public void setLocalBookBrrow(LocalBookBrrow localBookBrrow) {
+        this.localBookBrrow = localBookBrrow;
+    }
+
+    public ForeignMemberBrrow getForeignMemberBrrow() {
+        return foreignMemberBrrow;
+    }
+
+    public void setForeignMemberBrrow(ForeignMemberBrrow foreignMemberBrrow) {
+        this.foreignMemberBrrow = foreignMemberBrrow;
     }
 
     public Item(String itemCode, String itemCategory, String title, String author, String publisher, String year, String bookCatagory, String ISBN, double price, String floor, String cupBoard, String stock) {

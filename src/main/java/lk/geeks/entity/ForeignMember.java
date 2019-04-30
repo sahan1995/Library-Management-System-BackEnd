@@ -1,22 +1,30 @@
 package lk.geeks.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.Size;
 
 @Entity
 public class ForeignMember {
 
     @Id
+    @Size(min = 10, message = "NIC should have at least 10 characters")
     private
     String NIC;
     private String fullname;
     private String gender;
     private String email;
     private String dob;
+    @Size(min = 10, message = "Telephone Number should have at least 10 characters")
     private String telphone;
     private String country;
     private String address;
     private boolean isApprove;
+
+    @OneToOne(mappedBy = "foreignMember",cascade = CascadeType.ALL)
+    private ForeignMemberBrrow foreignMemberBrrow;
 
     public ForeignMember(String NIC, String fullname, String gender, String email, String dob, String telphone, String country, String address, boolean isApprove) {
         this.NIC = NIC;
@@ -103,6 +111,14 @@ public class ForeignMember {
 
     public void setApprove(boolean approve) {
         isApprove = approve;
+    }
+
+    public ForeignMemberBrrow getForeignMemberBrrow() {
+        return foreignMemberBrrow;
+    }
+
+    public void setForeignMemberBrrow(ForeignMemberBrrow foreignMemberBrrow) {
+        this.foreignMemberBrrow = foreignMemberBrrow;
     }
 
     @Override

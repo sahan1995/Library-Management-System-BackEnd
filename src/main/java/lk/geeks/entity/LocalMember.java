@@ -1,22 +1,29 @@
 package lk.geeks.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.Size;
 
 @Entity
 public class LocalMember {
 
     @Id
+    @Size(min = 10, message = "NIC should have at least 10 characters")
     private
     String NIC;
 
     private String fullname;
+    @Size(min = 10, message = "Telephone Number should have at least 10 characters")
     private String telephone;
     private String gender;
     private String dob;
     private String email;
     private String address;
 
+    @OneToOne(mappedBy = "localMember",cascade = {CascadeType.ALL})
+    private LocalBookBrrow localBookBrrow;
 
     public LocalMember(String NIC, String fullname, String telephone, String gender, String dob, String email, String address) {
         this.NIC = NIC;
@@ -87,6 +94,14 @@ public class LocalMember {
         this.address = address;
     }
 
+    public LocalBookBrrow getLocalBookBrrow() {
+        return localBookBrrow;
+    }
+
+    public void setLocalBookBrrow(LocalBookBrrow localBookBrrow) {
+        this.localBookBrrow = localBookBrrow;
+    }
+
     @Override
     public String toString() {
         return "LocalMember{" +
@@ -97,6 +112,7 @@ public class LocalMember {
                 ", dob='" + dob + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
+                ", localBookBrrow=" + localBookBrrow +
                 '}';
     }
 }

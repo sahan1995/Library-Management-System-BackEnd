@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,11 +40,13 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private LocalMemberService localMemberService;
+
+//    @Autowired
+//    private PasswordEncoder encoder;
     @Override
     public boolean save(UserDTO userDTO) {
         User user = new User();
         BeanUtils.copyProperties(userDTO,user);
-
         userRepository.save(user);
         return true;
     }

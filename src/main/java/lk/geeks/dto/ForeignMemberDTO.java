@@ -17,9 +17,10 @@ public class ForeignMemberDTO {
     private String country;
     private String address;
     private boolean isApprove;
-private String userName;
-private String password;
+    private String userName;
+    private String password;
 
+    private ForeignMemberBrrowDTO foreignMemberBrrowDTO;
 
     public ForeignMemberDTO(String NIC, String fullname, String gender, String email, String dob, String telphone, String country, String address, boolean isApprove, String userName, String password) {
         this.NIC = NIC;
@@ -139,6 +140,14 @@ private String password;
         this.password = password;
     }
 
+    public ForeignMemberBrrowDTO getForeignMemberBrrowDTO() {
+        return foreignMemberBrrowDTO;
+    }
+
+    public void setForeignMemberBrrowDTO(ForeignMemberBrrowDTO foreignMemberBrrowDTO) {
+        this.foreignMemberBrrowDTO = foreignMemberBrrowDTO;
+    }
+
     @Override
     public String toString() {
         return "ForeignMemberDTO{" +
@@ -153,6 +162,7 @@ private String password;
                 ", isApprove=" + isApprove +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
+                ", foreignMemberBrrowDTO=" + foreignMemberBrrowDTO +
                 '}';
     }
 }

@@ -1,8 +1,5 @@
 package lk.geeks.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 
 public class LocalMemberDTO {
 
@@ -21,6 +18,7 @@ public class LocalMemberDTO {
     private String userName;
     private String password;
 
+    private LocalBookBrrowDTO localBookBrrowDTO;
     public LocalMemberDTO(String NIC, String fullname, String telephone, String gender, String dob, String email, String address, String userName, String password) {
         this.NIC = NIC;
         this.fullname = fullname;
@@ -118,6 +116,14 @@ public class LocalMemberDTO {
         this.password = password;
     }
 
+    public LocalBookBrrowDTO getLocalBookBrrowDTO() {
+        return localBookBrrowDTO;
+    }
+
+    public void setLocalBookBrrowDTO(LocalBookBrrowDTO localBookBrrowDTO) {
+        this.localBookBrrowDTO = localBookBrrowDTO;
+    }
+
     @Override
     public String toString() {
         return "LocalMemberDTO{" +
@@ -130,6 +136,7 @@ public class LocalMemberDTO {
                 ", address='" + address + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
+                ", localBookBrrowDTO=" + localBookBrrowDTO +
                 '}';
     }
 }

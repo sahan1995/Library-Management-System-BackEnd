@@ -15,4 +15,8 @@ public interface LocalMemberService {
     List<LocalMemberDTO> findAll();
 
     LocalMemberDTO findById(String NIC);
+
+
+
+
 }
